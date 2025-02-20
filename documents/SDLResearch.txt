@@ -1,0 +1,22 @@
+SDL:
+  -https://wiki.libsdl.org/SDL2/Installation
+    -How to install and use SDL
+
+  -https://wiki.libsdl.org/SDL2/APIByCategory
+    -API reference for SDL
+    
+  -https://lazyfoo.net/tutorials/SDL/
+    -Very good tutorials on various things that will absolutely be helpful
+
+  -https://www.libsdl.org/
+    -What is SDL, and why it’s a thing
+
+  -https://en.cppreference.com/w/
+    -C++ reference, since we’d probably use C++ over pure C.
+
+I think SDL is a good option because we all have experience in C, and C++ isn’t THAT different.
+It also handles most of the harder things like loading a window(platform independent), user
+input, and sound. It will also be a fun challenge to use a lower level language, at least for me. It
+is MORE work, but this can be a good thing with allowing more work for sprints, since with an
+engine we might finish early. But this can be a bad thing because we may want to use this
+project as a resume project.

@@ -1,0 +1,23 @@
+Godot Documentation links:
+
+● Distinct features and design of Game engine: 
+https://godotengine.org/features/
+
+● Godot demo Projects and examples to use for inspiration: 
+https://github.com/godotengine/godot-demo-projects
+
+● Introduction to Godot and how it works: 
+https://docs.godotengine.org/en/stable/getting_started/step_by_step/index.html
+
+● Asset documentation, adding images and sprites will be useful for our project: 
+https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/index.html
+
+● Godot docs, includes asset workflow, syntax and scripting, and project workflow which
+could be extremely helpful : 
+https://docs.godotengine.org/en/3.0/index.html
+
+Godot would be a helpful game engine for us to use because of its ease of access. Its alot
+simpler to use than libraries like SDL or raylib especially since we can basically drag and drop
+assets which would make map creation much easier. There is also alot of documentation about
+it and it seems like a more modern tool to build our project on. Its written in C/C++ which we all
+have experience on, its also written in gdscript

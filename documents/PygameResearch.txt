@@ -1,0 +1,23 @@
+Pygame:
+  -https://www.pygame.org/download.shtml
+    -Download information for pygame
+
+  -https://www.pygame.org/docs/
+    -Documentation AND quick start guide
+
+  -https://www.geeksforgeeks.org/pygame-tutorial/
+    -Tutorials for pygame that may be useful
+
+  -https://github.com/pygame/pygame
+    -Github for looking at source code, and for an introduction as to what pygame is.
+        Also has a link for writing unit tests for pygame.
+
+  -https://docs.python.org/3/
+    -Python documentation in case it’s needed
+
+Pygame is a fair competitor to SDL… mostly because it is a python wrapper for SDL. This gives
+it some of the benefits of SDL, with more benefits of python. Building upon SDL allows it to get
+some performance that python would want. It being python based allows for faster development,
+because it’s python. The faster development only continues with pygame coming with a large
+number of helper functions to do things like load sprites, draw shapes, and some nicer audio
+library stuff.

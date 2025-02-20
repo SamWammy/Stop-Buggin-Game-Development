@@ -1,0 +1,23 @@
+Raylib Documentation links :
+
+● About and Instillation: 
+https://www.raylib.com/index.html#architecture
+
+● Raylib syntax and function cheatsheet: 
+https://www.raylib.com/cheatsheet/cheatsheet.html
+
+● Examples of use: 
+https://www.raylib.com/examples.html
+
+● Raylib intro course and interesting tutorials: 
+https://github.com/raysan5/raylib-intro-course
+
+● Github repository containing more examples and faq: 
+https://github.com/raysan5/raylib
+
+I feel like using raylib as our programming library would be a good option because it provides us
+with lots of materials to refer to which can be helpful considering everyone is relatively new to
+game development. It’s also written in C which everyone in our group has experience with, there
+is also documentation for the library functions given as well. It can provide a good foundation to
+begin with, and as we become more and more accustomed to the library we can build upon our
+project and make it more suited to our vision

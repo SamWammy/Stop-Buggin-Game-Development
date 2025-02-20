@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjooe75tbp7o8"]
+
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="1_xch2t"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/Replay.gd" id="2_31n63"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/GoToScene.gd" id="3_sux27"]
+[ext_resource type="AudioStream" uid="uid://bc4s2578ywtc8" path="res://Music/Maintheme.mp3" id="4_hdlmw"]
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="5_7dw7w"]
+
+[node name="Game Over" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.5
+offset_top = 17.5
+offset_right = 17.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.97, 0.95)
+color = Color(0.231373, 0.639216, 0.34902, 1)
+
+[node name="Background2" type="ColorRect" parent="Background"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0412
+offset_top = -18.4211
+offset_right = -18.0413
+offset_bottom = -18.4211
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.035, 1.063)
+color = Color(0, 0, 0, 1)
+
+[node name="Replay?" parent="." instance=ExtResource("1_xch2t")]
+process_mode = 3
+position = Vector2(814, 470)
+scale = Vector2(6, 6)
+inputText = "Replay?"
+
+[node name="ButtonFunction" type="Node2D" parent="Replay?"]
+process_mode = 3
+script = ExtResource("2_31n63")
+
+[node name="Maps" parent="." instance=ExtResource("1_xch2t")]
+process_mode = 3
+position = Vector2(312, 476)
+scale = Vector2(6, 6)
+inputText = "Maps"
+
+[node name="ButtonFunction" type="Node2D" parent="Maps"]
+process_mode = 3
+script = ExtResource("3_sux27")
+scenePath = "res://Scenes/map_menu.tscn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_hdlmw")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
+stream = ExtResource("4_hdlmw")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 222.0
+offset_top = 145.0
+offset_right = 1991.0
+offset_bottom = 263.0
+scale = Vector2(1.65514, 1.94017)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("5_7dw7w")
+theme_override_font_sizes/font_size = 100
+text = "You Win!"

@@ -1,0 +1,219 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgwoiqtr545a1"]
+
+[ext_resource type="AudioStream" uid="uid://bc4s2578ywtc8" path="res://Music/Maintheme.mp3" id="2_eq1p8"]
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="2_ielqa"]
+[ext_resource type="Script" path="res://Script/quitmainpause.gd" id="2_klj4j"]
+[ext_resource type="Script" path="res://Script/OptionsMenu.gd" id="3_6ptia"]
+[ext_resource type="Script" path="res://Script/quitmapspause.gd" id="3_8ha8p"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/GoBack.gd" id="3_38egq"]
+[ext_resource type="Texture2D" uid="uid://buublwwkjcc5q" path="res://Assets/Stop Buggin' Assets/Backgrounds/Screenshot 2024-09-27 180759.png" id="6_e1t27"]
+[ext_resource type="Script" path="res://Script/OptionsMusic.gd" id="7_2ddbh"]
+[ext_resource type="Script" path="res://Script/OptionsBack.gd" id="8_n16kj"]
+[ext_resource type="Script" path="res://Script/h_slider.gd" id="9_d2ucm"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/Mute.gd" id="10_b3mdh"]
+[ext_resource type="Script" path="res://Script/MusicBack.gd" id="11_8rdrd"]
+
+[node name="Pause Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 380.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.639216, 0.34902, 1)
+
+[node name="Main Menu" parent="." instance=ExtResource("2_ielqa")]
+process_mode = 3
+position = Vector2(660, 125)
+scale = Vector2(6, 6)
+inputText = "Menu"
+
+[node name="ButtonFunction" type="Node2D" parent="Main Menu"]
+process_mode = 3
+script = ExtResource("2_klj4j")
+
+[node name="Map Menu" parent="." instance=ExtResource("2_ielqa")]
+process_mode = 3
+position = Vector2(655, 268)
+scale = Vector2(6, 6)
+inputText = "Maps"
+
+[node name="ButtonFunction" type="Node2D" parent="Map Menu"]
+process_mode = 3
+script = ExtResource("3_8ha8p")
+
+[node name="Options" parent="." instance=ExtResource("2_ielqa")]
+process_mode = 3
+position = Vector2(660, 407)
+scale = Vector2(6, 6)
+inputText = "Options"
+
+[node name="ButtonFunction" type="Node2D" parent="Options"]
+script = ExtResource("3_6ptia")
+
+[node name="Resume" parent="." instance=ExtResource("2_ielqa")]
+process_mode = 3
+position = Vector2(659, 562)
+scale = Vector2(8, 8)
+inputText = "Resume"
+
+[node name="ButtonFunction" type="Node2D" parent="Resume"]
+process_mode = 3
+script = ExtResource("3_38egq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_eq1p8")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("2_eq1p8")
+autoplay = true
+
+[node name="Options_menu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Options_menu"]
+layout_mode = 0
+offset_right = 1349.0
+offset_bottom = 769.0
+texture = ExtResource("6_e1t27")
+
+[node name="MarginContainer" type="MarginContainer" parent="Options_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options_menu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Separator" type="Control" parent="Options_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator2" type="Control" parent="Options_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="Options_menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" parent="Options_menu/MarginContainer/VBoxContainer" instance=ExtResource("2_ielqa")]
+process_mode = 3
+z_index = 11
+position = Vector2(649, 203)
+inputText = "Music"
+
+[node name="ButtonFunction" type="Node2D" parent="Options_menu/MarginContainer/VBoxContainer/Music"]
+process_mode = 3
+top_level = true
+z_index = 11
+script = ExtResource("7_2ddbh")
+
+[node name="Back" parent="Options_menu/MarginContainer/VBoxContainer" instance=ExtResource("2_ielqa")]
+process_mode = 3
+z_index = 11
+position = Vector2(647, 374)
+inputText = "Back"
+
+[node name="ButtonFunction" type="Node2D" parent="Options_menu/MarginContainer/VBoxContainer/Back"]
+process_mode = 3
+top_level = true
+z_index = 11
+script = ExtResource("8_n16kj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Options_menu"]
+process_mode = 3
+stream = ExtResource("2_eq1p8")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="Options_menu/AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("2_eq1p8")
+autoplay = true
+
+[node name="Music_menu" type="Control" parent="."]
+visible = false
+z_index = 11
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Music_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1393.0
+offset_bottom = 809.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_e1t27")
+
+[node name="Master" type="HSlider" parent="Music_menu/TextureRect"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 0.421
+anchor_right = 0.667
+anchor_bottom = 0.579
+offset_left = 1.38501
+offset_top = 5.34998
+offset_right = 0.612976
+offset_bottom = 5.59595
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("9_d2ucm")
+bus_name = "Master"
+
+[node name="DefaultUiButton" parent="Music_menu/TextureRect/Master" instance=ExtResource("2_ielqa")]
+process_mode = 3
+position = Vector2(-115, 55)
+inputText = "Volume"
+
+[node name="ButtonFunction" type="Node2D" parent="Music_menu/TextureRect/Master/DefaultUiButton"]
+process_mode = 3
+script = ExtResource("10_b3mdh")
+bus_name = "Master"
+
+[node name="Back Button" parent="Music_menu" instance=ExtResource("2_ielqa")]
+process_mode = 3
+position = Vector2(129, 634)
+inputText = "Back"
+
+[node name="ButtonFunction" type="Node2D" parent="Music_menu/Back Button"]
+process_mode = 3
+script = ExtResource("11_8rdrd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music_menu"]
+process_mode = 3
+stream = ExtResource("2_eq1p8")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="Music_menu/AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("2_eq1p8")
+autoplay = true

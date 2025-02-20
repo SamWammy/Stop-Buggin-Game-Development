@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://1gmjyg2pkqux"]
+
+[ext_resource type="Script" path="res://Script/nuke_special_button.gd" id="1_p0m26"]
+[ext_resource type="Texture2D" uid="uid://bsd08fxwp2ojj" path="res://Assets/Stop Buggin' Assets/Towers and Characters/spraybottle.png" id="2_u4pjs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvhp6"]
+font_size = 20
+font_color = Color(0.513726, 1, 0.482353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxcob"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2cwi"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="nukespecialbutton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_p0m26")
+
+[node name="Spraybottle" type="Sprite2D" parent="."]
+position = Vector2(17, 28)
+scale = Vector2(0.18457, 0.145508)
+texture = ExtResource("2_u4pjs")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 47.0
+offset_right = 68.0
+offset_bottom = 111.0
+scale = Vector2(0.900824, 1.11323)
+text = "200$"
+label_settings = SubResource("LabelSettings_pvhp6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 65.0
+offset_right = 64.0
+offset_bottom = 69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nxcob")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m2cwi")
+max_value = 60.0
+step = 1.0
+value = 60.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

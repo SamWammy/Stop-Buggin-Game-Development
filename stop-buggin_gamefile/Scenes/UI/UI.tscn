@@ -1,0 +1,769 @@
+[gd_scene load_steps=38 format=3 uid="uid://26tssamfya10"]
+
+[ext_resource type="PackedScene" uid="uid://byx5sup66hg31" path="res://Scenes/UI/Tower Texture Buttons/lizard_texture_button.tscn" id="1_axafp"]
+[ext_resource type="Script" path="res://Script/UI_variables.gd" id="1_yduu6"]
+[ext_resource type="PackedScene" uid="uid://crayu8h1rfj7f" path="res://Scenes/UI/pause_button.tscn" id="2_7073q"]
+[ext_resource type="Shader" path="res://Script/stop_buggin'.gdshader" id="3_7rrps"]
+[ext_resource type="Script" path="res://Script/money.gd" id="3_yolf5"]
+[ext_resource type="PackedScene" uid="uid://1gmjyg2pkqux" path="res://Scenes/UI/Tower Texture Buttons/nuke_special_button.tscn" id="4_2hub7"]
+[ext_resource type="PackedScene" uid="uid://bn7000nu5oxa4" path="res://Scenes/UI/Tower Texture Buttons/cat_special_button.tscn" id="4_6m6e2"]
+[ext_resource type="Script" path="res://Script/hearts.gd" id="4_doxhw"]
+[ext_resource type="Script" path="res://Script/controller.gd" id="7_w6v77"]
+[ext_resource type="Script" path="res://Script/heartlabel.gd" id="8_l2v4w"]
+[ext_resource type="Texture2D" uid="uid://ci4pdk4njmyq6" path="res://Assets/Stop Buggin' Assets/UI assets/play-24 (1) with outline.png" id="9_7d2qr"]
+[ext_resource type="Script" path="res://Script/round.gd" id="9_nndgl"]
+[ext_resource type="Script" path="res://Script/play_button.gd" id="10_itwqo"]
+[ext_resource type="Texture2D" uid="uid://bdcu4a587q6ob" path="res://Assets/Stop Buggin' Assets/UI assets/fast-forward-24 FINAL with outline.png" id="11_ac0e0"]
+[ext_resource type="Texture2D" uid="uid://7btiqwyf0axf" path="res://Assets/Stop Buggin' Assets/UI assets/fast-forward-24 Clicked.png" id="12_yxb32"]
+[ext_resource type="Script" path="res://Script/fast_forward_button.gd" id="13_cjoxp"]
+[ext_resource type="Script" path="res://Script/redlizardinfo.gd" id="15_0j8d2"]
+[ext_resource type="Script" path="res://Script/greenlizardinfo.gd" id="15_cawbx"]
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="16_xyv57"]
+[ext_resource type="Script" path="res://Script/yellowlizardinfo.gd" id="17_poebw"]
+[ext_resource type="Script" path="res://Script/outline.gd" id="18_d2xj2"]
+[ext_resource type="Script" path="res://Script/doubleLizard_info.gd" id="20_34lra"]
+[ext_resource type="Script" path="res://Script/TowerUI.gd" id="21_d68gw"]
+[ext_resource type="Script" path="res://Script/SellButton.gd" id="22_1oweb"]
+[ext_resource type="Texture2D" uid="uid://ccn6woucjbj4m" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/SellButton.png" id="24_mkba0"]
+[ext_resource type="Script" path="res://Script/nukeinfo.gd" id="25_fr08v"]
+[ext_resource type="Texture2D" uid="uid://cgbbsbv1wytj0" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/SellButton2.png" id="26_6ni40"]
+[ext_resource type="Script" path="res://Script/catinfo.gd" id="26_gprmj"]
+[ext_resource type="Script" path="res://Script/tl_strong.gd" id="27_26ys8"]
+[ext_resource type="Script" path="res://Script/tl_first.gd" id="27_yqbvi"]
+[ext_resource type="Script" path="res://Script/tl_last.gd" id="29_888jl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgcwc"]
+bg_color = Color(0.65098, 0.831373, 0.490196, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62flh"]
+shader = ExtResource("3_7rrps")
+shader_parameter/inputColor = Vector3(0, 150, 200)
+shader_parameter/eyeColor = Vector3(0, 75, 40)
+shader_parameter/blendScale = 0.75
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg3bp"]
+shader = ExtResource("3_7rrps")
+shader_parameter/inputColor = Vector3(0, 1, 0)
+shader_parameter/eyeColor = Vector3(255, 150, 255)
+shader_parameter/blendScale = 0.75
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pkaj4"]
+shader = ExtResource("3_7rrps")
+shader_parameter/inputColor = Vector3(255, 190, 255)
+shader_parameter/eyeColor = Vector3(1, 240, 230)
+shader_parameter/blendScale = 0.75
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykjxr"]
+shader = ExtResource("3_7rrps")
+shader_parameter/inputColor = Vector3(255, 255, 204)
+shader_parameter/eyeColor = Vector3(1, 0, 255)
+shader_parameter/blendScale = 0.75
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Theme" id="Theme_y0q4h"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_yduu6")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.00607639
+anchor_bottom = 0.126543
+offset_left = 1143.0
+offset_top = -3.0
+offset_right = 1283.0
+offset_bottom = 645.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wgcwc")
+metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Label" parent="Panel" node_paths=PackedStringArray("health")]
+z_index = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 599.0
+offset_right = 65.0
+offset_bottom = 659.0
+theme_override_colors/font_color = Color(0.0117647, 0.654902, 0.0117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 25
+text = "650$"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_yolf5")
+health = NodePath("../Controller")
+
+[node name="Lives" type="Label" parent="Panel" node_paths=PackedStringArray("health")]
+z_index = 1
+layout_mode = 0
+offset_left = 77.0
+offset_top = 600.0
+offset_right = 141.0
+offset_bottom = 660.0
+theme_override_colors/font_color = Color(0.0117647, 0.654902, 0.0117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 25
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_doxhw")
+health = NodePath("../Controller")
+
+[node name="Controller" type="Node2D" parent="Panel"]
+position = Vector2(72, 580)
+script = ExtResource("7_w6v77")
+
+[node name="heart" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 617.0
+offset_right = 121.0
+offset_bottom = 640.0
+scale = Vector2(0.750442, 1.22364)
+script = ExtResource("8_l2v4w")
+
+[node name="Rounds" type="Label" parent="Panel" node_paths=PackedStringArray("health")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 580.0
+offset_right = 135.0
+offset_bottom = 609.0
+theme_override_colors/font_color = Color(0.0117647, 0.654902, 0.0117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 25
+text = "Rounds: 0 "
+script = ExtResource("9_nndgl")
+health = NodePath("../Controller")
+
+[node name="Towers Label" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 7.0
+offset_top = 13.0
+offset_right = 128.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.0117647, 0.654902, 0.0117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 32
+text = "Towers"
+horizontal_alignment = 1
+
+[node name="Specials label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 408.0
+offset_right = 137.0
+offset_bottom = 441.0
+scale = Vector2(0.96, 0.96)
+theme_override_colors/font_color = Color(0.0117647, 0.654902, 0.0117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 32
+text = "Specials"
+horizontal_alignment = 1
+
+[node name="FlowContainerTowers" type="FlowContainer" parent="Panel"]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 42.0
+offset_right = 142.0
+offset_bottom = 242.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="RedLizardSpawnButton" parent="Panel/FlowContainerTowers" node_paths=PackedStringArray("controller") instance=ExtResource("1_axafp")]
+layout_mode = 2
+newScale = Vector2(2.5, 2.5)
+cost = 50
+controller = NodePath("../../Controller")
+
+[node name="BlueLizardSpawnButton" parent="Panel/FlowContainerTowers" node_paths=PackedStringArray("controller") instance=ExtResource("1_axafp")]
+material = SubResource("ShaderMaterial_62flh")
+layout_mode = 2
+type = 1
+newScale = Vector2(2.5, 2.5)
+color = Vector3(0, 150, 200)
+eyeColor = Vector3(0, 75, 40)
+blendScale = 0.75
+cost = 75
+controller = NodePath("../../Controller")
+
+[node name="GreenLizardSpawnButton" parent="Panel/FlowContainerTowers" node_paths=PackedStringArray("controller") instance=ExtResource("1_axafp")]
+material = SubResource("ShaderMaterial_bg3bp")
+layout_mode = 2
+type = 2
+newScale = Vector2(2.5, 2.5)
+color = Vector3(0, 1, 0)
+eyeColor = Vector3(0, 150, 255)
+blendScale = 0.75
+cost = 100
+controller = NodePath("../../Controller")
+
+[node name="Double_Lizard" parent="Panel/FlowContainerTowers" node_paths=PackedStringArray("controller") instance=ExtResource("1_axafp")]
+material = SubResource("ShaderMaterial_pkaj4")
+layout_mode = 2
+type = 4
+newScale = Vector2(2.5, 2.5)
+color = Vector3(0, 1, 0)
+eyeColor = Vector3(0, 150, 255)
+blendScale = 0.75
+cost = 150
+controller = NodePath("../../Controller")
+
+[node name="YellowLizardSpawnButton" parent="Panel/FlowContainerTowers" node_paths=PackedStringArray("controller") instance=ExtResource("1_axafp")]
+material = SubResource("ShaderMaterial_ykjxr")
+layout_mode = 2
+type = 3
+color = Vector3(255, 255, 204)
+eyeColor = Vector3(1, 0, 255)
+blendScale = 0.75
+cost = 200
+controller = NodePath("../../Controller")
+
+[node name="FlowContainerSpecials" type="FlowContainer" parent="Panel"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 455.0
+offset_right = 142.0
+offset_bottom = 587.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="CatSpecialButton" parent="Panel/FlowContainerSpecials" node_paths=PackedStringArray("controller") instance=ExtResource("4_6m6e2")]
+layout_mode = 2
+controller = NodePath("../../Controller")
+
+[node name="nukespecialbutton" parent="Panel/FlowContainerSpecials" node_paths=PackedStringArray("controller") instance=ExtResource("4_2hub7")]
+layout_mode = 2
+cost = 200
+controller = NodePath("../../Controller")
+
+[node name="Timer2" type="Timer" parent="Panel/FlowContainerSpecials/nukespecialbutton"]
+wait_time = 1.5
+
+[node name="PlayButton" type="TextureButton" parent="." node_paths=PackedStringArray("fastForwardButton", "health")]
+z_index = 3
+offset_left = 1153.0
+offset_top = 665.0
+offset_right = 1183.0
+offset_bottom = 695.0
+scale = Vector2(1.75146, 1.78664)
+texture_normal = ExtResource("9_7d2qr")
+stretch_mode = 0
+script = ExtResource("10_itwqo")
+fastForwardButton = NodePath("../FastForwardButton")
+health = NodePath("../Panel/Controller")
+
+[node name="Timer" type="Timer" parent="PlayButton"]
+wait_time = 0.5
+one_shot = true
+
+[node name="FastForwardButton" type="TextureButton" parent="."]
+z_index = 4
+offset_left = 1147.0
+offset_top = 656.0
+offset_right = 1209.0
+offset_bottom = 724.0
+toggle_mode = true
+texture_normal = ExtResource("11_ac0e0")
+texture_pressed = ExtResource("12_yxb32")
+stretch_mode = 0
+script = ExtResource("13_cjoxp")
+
+[node name="Pause_Button" parent="." instance=ExtResource("2_7073q")]
+z_index = 1
+offset_left = 1214.0
+offset_top = 659.0
+offset_right = 1180.78
+offset_bottom = 618.208
+
+[node name="greenlizard" type="ColorRect" parent="."]
+visible = false
+z_index = 6
+z_as_relative = false
+offset_left = 771.0
+offset_top = 130.0
+offset_right = 1608.0
+offset_bottom = 578.0
+scale = Vector2(0.44078, 0.360905)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("15_cawbx")
+
+[node name="ColorRect" type="ColorRect" parent="greenlizard"]
+layout_mode = 0
+offset_left = 13.6122
+offset_top = 16.625
+offset_right = 53.6122
+offset_bottom = 56.625
+scale = Vector2(20.2326, 10.418)
+color = Color(0.0901961, 0.176471, 0.0627451, 1)
+
+[node name="Label2" type="Label" parent="greenlizard"]
+layout_mode = 0
+offset_left = 77.136
+offset_top = 171.79
+offset_right = 218.136
+offset_bottom = 208.79
+scale = Vector2(4.19425, 6.33753)
+theme_override_colors/font_color = Color(0.992157, 0.290196, 0.764706, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "damage: 35
+shooting speed:  1.3"
+
+[node name="Label" type="Label" parent="greenlizard"]
+z_index = 2
+layout_mode = 0
+offset_left = 147.466
+offset_top = 41.5622
+offset_right = 247.466
+offset_bottom = 64.5622
+scale = Vector2(6.47943, 7.45671)
+theme_override_colors/font_color = Color(0.992157, 0.290196, 0.764706, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "CHAMELEON"
+
+[node name="yellowlizard" type="ColorRect" parent="."]
+visible = false
+z_index = 6
+z_as_relative = false
+offset_left = 771.0
+offset_top = 192.0
+offset_right = 1608.0
+offset_bottom = 640.0
+scale = Vector2(0.44078, 0.360905)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("17_poebw")
+
+[node name="ColorRect" type="ColorRect" parent="yellowlizard"]
+layout_mode = 0
+offset_left = 13.6122
+offset_top = 16.625
+offset_right = 53.6122
+offset_bottom = 56.625
+scale = Vector2(20.2326, 10.418)
+color = Color(0.143572, 0.0873923, 0.356598, 1)
+
+[node name="Label2" type="Label" parent="yellowlizard"]
+layout_mode = 0
+offset_left = 52.1803
+offset_top = 138.541
+offset_right = 238.18
+offset_bottom = 195.541
+scale = Vector2(4.19425, 6.33753)
+theme_override_colors/font_color = Color(0.260055, 0.653412, 0.927847, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 14
+text = "damage: 15
+shooting speed:  1
+Shoots 2 shots at once"
+
+[node name="Label" type="Label" parent="yellowlizard"]
+z_index = 2
+layout_mode = 0
+offset_left = 40.8367
+offset_top = 38.7914
+offset_right = 157.837
+offset_bottom = 61.7914
+scale = Vector2(6.47943, 7.45671)
+theme_override_colors/font_color = Color(0.258824, 0.654902, 0.929412, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "Spotted Lizard"
+
+[node name="redlizardinfo" type="ColorRect" parent="."]
+visible = false
+z_index = 6
+z_as_relative = false
+offset_left = 790.0
+offset_top = 26.0
+offset_right = 1627.0
+offset_bottom = 474.0
+scale = Vector2(0.415337, 0.339155)
+mouse_filter = 2
+theme = SubResource("Theme_y0q4h")
+color = Color(0.564706, 0.0862745, 0.227451, 1)
+script = ExtResource("15_0j8d2")
+
+[node name="ColorRect" type="ColorRect" parent="redlizardinfo"]
+z_index = -1
+layout_mode = 0
+offset_left = -14.6515
+offset_top = -16.0858
+offset_right = 25.3485
+offset_bottom = 23.9142
+scale = Vector2(21.6112, 12.0104)
+color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+
+[node name="Label2" type="Label" parent="redlizardinfo"]
+layout_mode = 0
+offset_left = 43.9547
+offset_top = 182.305
+offset_right = 184.955
+offset_bottom = 219.305
+scale = Vector2(5.00374, 5.50791)
+theme_override_colors/font_color = Color(0.992157, 0.92549, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "damage:  5
+shooting speed:  1"
+
+[node name="Label" type="Label" parent="redlizardinfo"]
+z_index = 2
+layout_mode = 0
+offset_left = 80.5836
+offset_top = 34.8525
+offset_right = 227.584
+offset_bottom = 57.8525
+scale = Vector2(5.26706, 8.03311)
+theme_override_colors/font_color = Color(0.992157, 0.92549, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "BEARDED DRAGON"
+
+[node name="bluelizardinfo" type="ColorRect" parent="."]
+visible = false
+z_index = 6
+z_as_relative = false
+offset_left = 774.0
+offset_top = 22.0
+offset_right = 1611.0
+offset_bottom = 470.0
+scale = Vector2(0.438372, 0.372403)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("18_d2xj2")
+
+[node name="ColorRect" type="ColorRect" parent="bluelizardinfo"]
+layout_mode = 0
+offset_left = 13.687
+offset_top = 10.7411
+offset_right = 53.687
+offset_bottom = 50.7411
+scale = Vector2(20.2195, 10.563)
+color = Color(0.203922, 0.352941, 0.482353, 1)
+
+[node name="Label2" type="Label" parent="bluelizardinfo"]
+layout_mode = 0
+offset_left = 50.1856
+offset_top = 166.486
+offset_right = 199.186
+offset_bottom = 203.486
+scale = Vector2(4.61153, 5.96367)
+theme_override_colors/font_color = Color(0.305882, 0.976471, 0.447059, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "damage:  8
+shooting speed:  1.25
+"
+
+[node name="Label" type="Label" parent="bluelizardinfo"]
+z_index = 2
+layout_mode = 0
+offset_left = 260.053
+offset_top = 37.5937
+offset_right = 360.053
+offset_bottom = 60.5937
+scale = Vector2(7.00521, 7.06807)
+theme_override_colors/font_color = Color(0.305882, 0.976471, 0.447059, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "GECKO"
+
+[node name="Pause_Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 131.0
+offset_top = -3.0
+offset_right = 171.0
+offset_bottom = 37.0
+
+[node name="purplelizardinfo" type="ColorRect" parent="."]
+visible = false
+z_index = 6
+z_as_relative = false
+offset_left = 767.0
+offset_top = 131.0
+offset_right = 1618.0
+offset_bottom = 569.0
+scale = Vector2(0.438372, 0.372403)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("20_34lra")
+
+[node name="ColorRect" type="ColorRect" parent="purplelizardinfo"]
+layout_mode = 0
+offset_left = 6.84352
+offset_top = 10.741
+offset_right = 47.8435
+offset_bottom = 49.741
+scale = Vector2(20.2195, 10.563)
+color = Color(0.705882, 0.219608, 0.619608, 1)
+
+[node name="Label2" type="Label" parent="purplelizardinfo"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 140.0
+offset_right = 202.0
+offset_bottom = 197.0
+scale = Vector2(4.61153, 5.96367)
+theme_override_colors/font_color = Color(0.305882, 0.976471, 0.737255, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 13
+text = "damage:  5
+shooting speed:  1
+Shoots Two enemies!"
+
+[node name="Label" type="Label" parent="purplelizardinfo"]
+z_index = 2
+layout_mode = 0
+offset_left = 41.061
+offset_top = 48.3347
+offset_right = 167.061
+offset_bottom = 65.3347
+scale = Vector2(7.00521, 7.06807)
+theme_override_colors/font_color = Color(0.305882, 0.976471, 0.737255, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 14
+text = "Komodo Dragon"
+
+[node name="TowerClickUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.992509, 1.07401)
+script = ExtResource("21_d68gw")
+
+[node name="TowerClickPanel" type="Panel" parent="TowerClickUI"]
+top_level = true
+z_index = 4
+layout_mode = 0
+offset_top = 658.0
+offset_right = 1143.0
+offset_bottom = 728.0
+
+[node name="SellButton" type="TextureButton" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 1039.0
+offset_top = 9.0
+offset_right = 1087.0
+offset_bottom = 25.0
+scale = Vector2(1.57123, 1.57209)
+texture_normal = ExtResource("24_mkba0")
+script = ExtResource("22_1oweb")
+
+[node name="SellLabel" type="Label" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 7.0
+offset_right = 1084.0
+offset_bottom = 30.0
+text = "Sell:"
+
+[node name="TL_First" type="TextureButton" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 11.0
+offset_right = 246.0
+offset_bottom = 27.0
+scale = Vector2(1.31262, 1.55839)
+toggle_mode = true
+texture_normal = ExtResource("24_mkba0")
+texture_pressed = ExtResource("26_6ni40")
+script = ExtResource("27_yqbvi")
+
+[node name="First" type="Label" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 9.0
+offset_right = 252.0
+offset_bottom = 32.0
+text = "First"
+
+[node name="TL_Strong" type="TextureButton" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 11.0
+offset_right = 321.0
+offset_bottom = 27.0
+scale = Vector2(1.22137, 1.54969)
+toggle_mode = true
+texture_normal = ExtResource("24_mkba0")
+texture_pressed = ExtResource("26_6ni40")
+script = ExtResource("27_26ys8")
+
+[node name="Strong" type="Label" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 9.0
+offset_right = 328.0
+offset_bottom = 32.0
+text = "Strong"
+
+[node name="TL_Last" type="TextureButton" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 11.0
+offset_right = 394.0
+offset_bottom = 27.0
+scale = Vector2(1.26548, 1.572)
+toggle_mode = true
+texture_normal = ExtResource("24_mkba0")
+texture_pressed = ExtResource("26_6ni40")
+script = ExtResource("29_888jl")
+
+[node name="Last" type="Label" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 8.0
+offset_right = 400.0
+offset_bottom = 31.0
+text = "Last"
+
+[node name="Label" type="Label" parent="TowerClickUI/TowerClickPanel"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 9.0
+offset_right = 193.0
+offset_bottom = 32.0
+text = "Tower Target:"
+
+[node name="NUKE" type="ColorRect" parent="."]
+z_index = 6
+z_as_relative = false
+offset_left = 767.0
+offset_top = 460.0
+offset_right = 1604.0
+offset_bottom = 908.0
+scale = Vector2(0.44078, 0.360905)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("25_fr08v")
+
+[node name="ColorRect" type="ColorRect" parent="NUKE"]
+layout_mode = 0
+offset_left = 13.6122
+offset_top = 16.625
+offset_right = 53.6122
+offset_bottom = 56.625
+scale = Vector2(20.2326, 10.418)
+color = Color(0.498039, 0.552941, 0.580392, 1)
+
+[node name="Label2" type="Label" parent="NUKE"]
+layout_mode = 0
+offset_left = 99.8231
+offset_top = 169.02
+offset_right = 285.823
+offset_bottom = 226.02
+scale = Vector2(3.71215, 6.12075)
+theme_override_colors/font_color = Color(1, 0.862745, 0, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 14
+text = "Does 100% Damage to All
+        Enemies On Screen"
+
+[node name="Label" type="Label" parent="NUKE"]
+z_index = 2
+layout_mode = 0
+offset_left = 45.3741
+offset_top = 44.333
+offset_right = 166.374
+offset_bottom = 67.333
+scale = Vector2(6.19758, 6.13716)
+theme_override_colors/font_color = Color(1, 0.862745, 0, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "Bug Spray NUKE"
+
+[node name="CAT" type="ColorRect" parent="."]
+z_index = 6
+z_as_relative = false
+offset_left = 768.0
+offset_top = 457.0
+offset_right = 1605.0
+offset_bottom = 905.0
+scale = Vector2(0.44078, 0.360905)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("26_gprmj")
+
+[node name="ColorRect" type="ColorRect" parent="CAT"]
+layout_mode = 0
+offset_left = 13.6122
+offset_top = 16.625
+offset_right = 53.6122
+offset_bottom = 56.625
+scale = Vector2(20.2326, 10.418)
+color = Color(0.952941, 0.94902, 0.752941, 1)
+
+[node name="Label2" type="Label" parent="CAT"]
+layout_mode = 0
+offset_left = 27.2244
+offset_top = 152.395
+offset_right = 224.224
+offset_bottom = 209.395
+scale = Vector2(3.9995, 5.55088)
+theme_override_colors/font_color = Color(0.360784, 0.309804, 0.572549, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+theme_override_font_sizes/font_size = 14
+text = "Damage: 10
+Travels The path backwards
+damaging enemies
+"
+
+[node name="Label" type="Label" parent="CAT"]
+z_index = 2
+layout_mode = 0
+offset_left = 288.0
+offset_top = 33.0
+offset_right = 315.0
+offset_bottom = 50.0
+scale = Vector2(6.47943, 7.45671)
+theme_override_colors/font_color = Color(0.360784, 0.309804, 0.572549, 1)
+theme_override_fonts/font = ExtResource("16_xyv57")
+text = "CAT"
+
+[connection signal="mouse_entered" from="Panel/FlowContainerTowers/RedLizardSpawnButton" to="redlizardinfo" method="_on_red_lizard_spawn_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerTowers/RedLizardSpawnButton" to="redlizardinfo" method="_on_red_lizard_spawn_button_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/FlowContainerTowers/BlueLizardSpawnButton" to="bluelizardinfo" method="_on_blue_lizard_spawn_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerTowers/BlueLizardSpawnButton" to="bluelizardinfo" method="_on_blue_lizard_spawn_button_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/FlowContainerTowers/GreenLizardSpawnButton" to="greenlizard" method="_on_green_lizard_spawn_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerTowers/GreenLizardSpawnButton" to="greenlizard" method="_on_green_lizard_spawn_button_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/FlowContainerTowers/Double_Lizard" to="purplelizardinfo" method="_on_double_lizard_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerTowers/Double_Lizard" to="purplelizardinfo" method="_on_double_lizard_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/FlowContainerTowers/YellowLizardSpawnButton" to="yellowlizard" method="_on_yellow_lizard_spawn_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerTowers/YellowLizardSpawnButton" to="yellowlizard" method="_on_yellow_lizard_spawn_button_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/FlowContainerSpecials/CatSpecialButton" to="CAT" method="_on_cat_special_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerSpecials/CatSpecialButton" to="CAT" method="_on_cat_special_button_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/FlowContainerSpecials/nukespecialbutton" to="NUKE" method="_on_nukespecialbutton_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/FlowContainerSpecials/nukespecialbutton" to="NUKE" method="_on_nukespecialbutton_mouse_exited"]
+[connection signal="timeout" from="Panel/FlowContainerSpecials/nukespecialbutton/Timer2" to="Panel/FlowContainerSpecials/nukespecialbutton" method="_on_timer_2_timeout"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
+[connection signal="toggled" from="FastForwardButton" to="FastForwardButton" method="_on_toggled"]
+[connection signal="hidden" from="greenlizard" to="greenlizard" method="_on_hidden"]
+[connection signal="hidden" from="yellowlizard" to="yellowlizard" method="_on_hidden"]
+[connection signal="hidden" from="redlizardinfo" to="redlizardinfo" method="_on_hidden"]
+[connection signal="hidden" from="bluelizardinfo" to="bluelizardinfo" method="_on_hidden"]
+[connection signal="hidden" from="purplelizardinfo" to="purplelizardinfo" method="_on_hidden"]
+[connection signal="pressed" from="TowerClickUI/TowerClickPanel/SellButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TowerClickUI/TowerClickPanel/SellButton" to="TowerClickUI/TowerClickPanel/SellButton" method="_on_pressed"]
+[connection signal="pressed" from="TowerClickUI/TowerClickPanel/TL_First" to="TowerClickUI/TowerClickPanel/TL_First" method="_on_pressed"]
+[connection signal="pressed" from="TowerClickUI/TowerClickPanel/TL_Strong" to="TowerClickUI/TowerClickPanel/TL_Strong" method="_on_pressed"]
+[connection signal="pressed" from="TowerClickUI/TowerClickPanel/TL_Last" to="TowerClickUI/TowerClickPanel/TL_Last" method="_on_pressed"]
+[connection signal="hidden" from="NUKE" to="NUKE" method="_on_hidden"]
+[connection signal="hidden" from="CAT" to="CAT" method="_on_hidden"]

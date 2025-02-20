@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://brwg5hncr5ovv"]
+
+[ext_resource type="Texture2D" uid="uid://bpu8qsm0a5x3c" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingOrange/SpiderWalkingSide1.png" id="1_fd1kp"]
+[ext_resource type="Texture2D" uid="uid://bpwhb0whofbdr" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingOrange/SpiderWalkingSide2.png" id="2_4mb62"]
+[ext_resource type="Texture2D" uid="uid://rj3pc4a6jtvk" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingOrange/SpiderWalkingSide3.png" id="3_6bgrm"]
+[ext_resource type="Texture2D" uid="uid://cqqd0p2l48ugr" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingOrange/SpiderWalkingSide4.png" id="4_ynat2"]
+[ext_resource type="Texture2D" uid="uid://bkq13ryoiqos0" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingPurple/SpiderWalkingSide1.png" id="5_fr8ej"]
+[ext_resource type="Texture2D" uid="uid://bc3jxik0cey3k" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingPurple/SpiderWalkingSide2.png" id="6_cndms"]
+[ext_resource type="Texture2D" uid="uid://cjqq617j028te" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingPurple/SpiderWalkingSide3.png" id="7_6213t"]
+[ext_resource type="Texture2D" uid="uid://061mtflg6uv3" path="res://Assets/Stop Buggin' Assets/Enemies/SpiderPack/WalkingPurple/SpiderWalkingSide4.png" id="8_fjj1m"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fd1kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4mb62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6bgrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ynat2")
+}],
+"loop": true,
+"name": &"walking_sideways_orange",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fr8ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cndms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6213t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fjj1m")
+}],
+"loop": true,
+"name": &"walking_sideways_purple",
+"speed": 5.0
+}]

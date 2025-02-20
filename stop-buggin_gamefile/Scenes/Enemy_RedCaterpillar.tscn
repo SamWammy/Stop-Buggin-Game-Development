@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cny60nb7i15eb"]
+
+[ext_resource type="Texture2D" uid="uid://7fbx6n8rhodx" path="res://Assets/Stop Buggin' Assets/Enemies/Caterpillar.png" id="1_a7bp1"]
+[ext_resource type="Script" path="res://Script/enemy.gd" id="1_hs3jg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsqld"]
+size = Vector2(20, 8.33333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn0cr"]
+bg_color = Color(0.868025, 0, 0.112472, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfcw3"]
+bg_color = Color(0.127942, 0.724548, 0, 1)
+
+[node name="RedCaterpillar" type="CharacterBody2D"]
+z_index = 5
+z_as_relative = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_hs3jg")
+enemy = 1
+speed = 25.0
+unit_health = 20
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.25)
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_tsqld")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+z_index = 5
+z_as_relative = false
+position = Vector2(1, -9)
+scale = Vector2(0.65625, 0.628906)
+texture = ExtResource("1_a7bp1")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 6
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xn0cr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nfcw3")
+max_value = 20.0
+step = 1.0
+value = 20.0
+fill_mode = 1
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 20.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -1.0
+offset_right = 21.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)

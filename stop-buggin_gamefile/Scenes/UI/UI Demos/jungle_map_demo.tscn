@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cditgfcnmkxqw"]
+
+[ext_resource type="PackedScene" uid="uid://26tssamfya10" path="res://Scenes/UI/UI.tscn" id="1_mrwcb"]
+[ext_resource type="PackedScene" uid="uid://lbs43ssyeqf6" path="res://Scenes/JungleMap.tscn" id="2_tlbwb"]
+[ext_resource type="Script" path="res://Script/WavesScriptJungleMap.gd" id="3_grdcg"]
+
+[node name="JungleMapDemo" type="Node2D"]
+scale = Vector2(1.02446, 1.12)
+
+[node name="Jungle_map" parent="." instance=ExtResource("2_tlbwb")]
+scale = Vector2(2.14068, 2.36534)
+
+[node name="Ui" parent="." node_paths=PackedStringArray("map_node", "waves") instance=ExtResource("1_mrwcb")]
+follow_viewport_enabled = true
+map_node = NodePath("../Jungle_map")
+base_speed = 75
+towerScale = Vector2(2.75, 2.75)
+waves = NodePath("../Waves")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.9, 0.9)
+
+[node name="Waves" type="Node2D" parent="."]
+script = ExtResource("3_grdcg")

@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5fq6lpnl2nbm"]
+
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="2_2olt8"]
+[ext_resource type="Texture2D" uid="uid://buublwwkjcc5q" path="res://Assets/Stop Buggin' Assets/Backgrounds/Screenshot 2024-09-27 180759.png" id="2_a5o2a"]
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="3_0mkvp"]
+[ext_resource type="AudioStream" uid="uid://bc4s2578ywtc8" path="res://Music/Maintheme.mp3" id="3_bvpj5"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/GoToScene.gd" id="4_ihled"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a5o2a")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_top = 36.0
+offset_right = 1152.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0, 0.917647, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_2olt8")
+theme_override_font_sizes/font_size = 128
+text = "Stop Buggin'"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bvpj5")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
+stream = ExtResource("3_bvpj5")
+autoplay = true
+
+[node name="Play" parent="." instance=ExtResource("3_0mkvp")]
+position = Vector2(576, 234)
+scale = Vector2(8, 8)
+inputText = "Play"
+
+[node name="ButtonFunction" type="Node2D" parent="Play"]
+script = ExtResource("4_ihled")
+scenePath = "res://Scenes/map_menu.tscn"
+
+[node name="Tutorial" parent="." instance=ExtResource("3_0mkvp")]
+position = Vector2(576, 370)
+scale = Vector2(6, 6)
+inputText = "Tutorial"
+
+[node name="ButtonFunction" type="Node2D" parent="Tutorial"]
+script = ExtResource("4_ihled")
+scenePath = "res://Scenes/tutorial_page.tscn"
+
+[node name="Options" parent="." instance=ExtResource("3_0mkvp")]
+position = Vector2(576, 481)
+inputText = "Options"
+
+[node name="ButtonFunction" type="Node2D" parent="Options"]
+script = ExtResource("4_ihled")
+scenePath = "res://Scenes/Options_menu.tscn"
+
+[node name="Quit" parent="." instance=ExtResource("3_0mkvp")]
+position = Vector2(576, 587)
+inputText = "Quit"
+
+[node name="ButtonFunction" type="Node2D" parent="Quit"]
+script = ExtResource("4_ihled")
+scenePath = "res://Scenes/Confirm_Menu.tscn"

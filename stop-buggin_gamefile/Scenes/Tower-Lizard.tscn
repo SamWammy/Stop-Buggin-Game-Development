@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://cstppdd4x8q2m"]
+
+[ext_resource type="Shader" path="res://Script/stop_buggin'.gdshader" id="1_6jeaw"]
+[ext_resource type="Script" path="res://Script/tower_lizard.gd" id="2_qfjul"]
+[ext_resource type="Texture2D" uid="uid://ctkp4j3e2h66w" path="res://Assets/Stop Buggin' Assets/Towers and Characters/Lizard.png" id="2_xgdy1"]
+[ext_resource type="Texture2D" uid="uid://cg2o4e5yiyj5s" path="res://Assets/Stop Buggin' Assets/UI assets/RedX.png" id="4_66tr1"]
+[ext_resource type="Script" path="res://Script/lizard_shooting.gd" id="5_1y8rx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_571th"]
+resource_local_to_scene = true
+shader = ExtResource("1_6jeaw")
+shader_parameter/inputColor = null
+shader_parameter/eyeColor = null
+shader_parameter/blendScale = null
+shader_parameter/alpha = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2ehc"]
+atlas = ExtResource("2_xgdy1")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc361"]
+atlas = ExtResource("2_xgdy1")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60n3c"]
+atlas = ExtResource("2_xgdy1")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5rvd"]
+atlas = ExtResource("2_xgdy1")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyi2n"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2ehc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc361")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60n3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5rvd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngbgh"]
+radius = 4.3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06lxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_66tr1")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"bad",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lml0o"]
+radius = 74.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_mliod"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+use_parent_material = true
+scale = Vector2(2, 2)
+script = ExtResource("2_qfjul")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(11, 0)
+
+[node name="LizardSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_571th")
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_xyi2n")
+autoplay = "default"
+
+[node name="PlacementCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0.17, 0.17)
+shape = SubResource("CircleShape2D_ngbgh")
+
+[node name="InvalidPlacementSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+sprite_frames = SubResource("SpriteFrames_06lxs")
+animation = &"bad"
+autoplay = "default"
+
+[node name="Lizard-Tower" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_1y8rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lizard-Tower"]
+shape = SubResource("CircleShape2D_lml0o")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Lizard-Tower/CollisionShape2D"]
+modulate = Color(0, 0, 0, 0.0705882)
+z_index = -1
+position = Vector2(0.249999, -0.24999)
+scale = Vector2(146.666, 146.5)
+mesh = SubResource("SphereMesh_mliod")
+
+[node name="Timer" type="Timer" parent="Lizard-Tower"]
+wait_time = 0.5
+autostart = true
+
+[node name="fireball_location" type="Node" parent="."]
+
+[connection signal="body_entered" from="Lizard-Tower" to="Lizard-Tower" method="_on_body_entered"]
+[connection signal="body_exited" from="Lizard-Tower" to="Lizard-Tower" method="_on_body_exited"]
+[connection signal="timeout" from="Lizard-Tower/Timer" to="Lizard-Tower" method="_on_timer_timeout"]

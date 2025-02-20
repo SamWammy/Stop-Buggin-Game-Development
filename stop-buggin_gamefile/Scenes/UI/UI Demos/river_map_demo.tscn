@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqkeuxji2ayas"]
+
+[ext_resource type="PackedScene" uid="uid://b8x6kjq83c88r" path="res://Scenes/river_map.tscn" id="1_hemee"]
+[ext_resource type="PackedScene" uid="uid://26tssamfya10" path="res://Scenes/UI/UI.tscn" id="2_paxje"]
+[ext_resource type="Script" path="res://Script/WavesScriptRiverMap.gd" id="3_k7b0i"]
+
+[node name="RiverMapDemo" type="Node2D"]
+
+[node name="River Map" parent="." instance=ExtResource("1_hemee")]
+position = Vector2(532, 327)
+scale = Vector2(3.15887, 3.25127)
+
+[node name="Ui" parent="." node_paths=PackedStringArray("map_node", "waves") instance=ExtResource("2_paxje")]
+follow_viewport_enabled = true
+map_node = NodePath("../River Map")
+base_speed = 100
+towerScale = Vector2(2.5, 2.5)
+waves = NodePath("../waves")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.9, 0.9)
+
+[node name="waves" type="Node2D" parent="."]
+script = ExtResource("3_k7b0i")

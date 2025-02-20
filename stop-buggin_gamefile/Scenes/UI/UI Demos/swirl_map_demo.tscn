@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://k57uxa4soovo"]
+
+[ext_resource type="PackedScene" uid="uid://ceib80vyn3cm2" path="res://Scenes/swirl_map.tscn" id="1_speax"]
+[ext_resource type="PackedScene" uid="uid://26tssamfya10" path="res://Scenes/UI/UI.tscn" id="2_pmln0"]
+[ext_resource type="Script" path="res://Script/WavesScrpitSwirlMap.gd" id="3_36th5"]
+
+[node name="SwirlMapDemo" type="Node2D"]
+
+[node name="swirl_map" parent="." instance=ExtResource("1_speax")]
+position = Vector2(59, 16)
+scale = Vector2(0.505029, 0.582008)
+
+[node name="Ui" parent="." node_paths=PackedStringArray("map_node", "waves") instance=ExtResource("2_pmln0")]
+follow_viewport_enabled = true
+map_node = NodePath("../swirl_map")
+base_speed = 100
+towerScale = Vector2(2.2, 2.2)
+waves = NodePath("../waves")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.9, 0.9)
+
+[node name="waves" type="Node2D" parent="."]
+position = Vector2(59, 16)
+scale = Vector2(0.477996, 0.519718)
+script = ExtResource("3_36th5")

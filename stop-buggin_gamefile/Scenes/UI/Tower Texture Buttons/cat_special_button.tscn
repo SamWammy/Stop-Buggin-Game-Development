@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn7000nu5oxa4"]
+
+[ext_resource type="Script" path="res://Script/cat_special_button.gd" id="1_fa76w"]
+[ext_resource type="Texture2D" uid="uid://ewxdh83ffqmu" path="res://Assets/Stop Buggin' Assets/Towers and Characters/cat.png" id="2_kr0mo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvhp6"]
+font_size = 20
+font_color = Color(0.513726, 1, 0.482353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxcob"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2cwi"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CatSpecialButton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_fa76w")
+
+[node name="cat" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(32, 31.5)
+scale = Vector2(4, 3.9375)
+texture = ExtResource("2_kr0mo")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 64.0
+offset_bottom = 114.0
+text = "25$"
+label_settings = SubResource("LabelSettings_pvhp6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 65.0
+offset_right = 64.0
+offset_bottom = 69.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nxcob")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m2cwi")
+max_value = 30.0
+step = 1.0
+value = 30.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

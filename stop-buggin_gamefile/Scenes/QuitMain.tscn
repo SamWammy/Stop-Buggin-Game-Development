@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6vyv2v4wbvre"]
+
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="1_3vi0e"]
+[ext_resource type="Script" path="res://Script/quitmain.gd" id="2_0t0ui"]
+[ext_resource type="Script" path="res://Script/QuitNo.gd" id="3_q8ule"]
+
+[node name="LuPopup" type="CanvasLayer"]
+layer = 3
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 178.0
+offset_top = 106.0
+offset_right = 178.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.709142, 0.656474)
+color = Color(0.231373, 0.639216, 0.34902, 1)
+
+[node name="Label" type="Label" parent="Background"]
+z_index = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 151.0
+offset_right = 1549.0
+offset_bottom = 254.0
+scale = Vector2(0.746708, 1.41561)
+theme_override_font_sizes/font_size = 88
+text = "ARE YOU SURE YOU WANT TO QUIT?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Yes Button" parent="." instance=ExtResource("1_3vi0e")]
+process_mode = 3
+z_index = 5
+position = Vector2(378, 426)
+scale = Vector2(6, 6)
+inputText = "Yes"
+
+[node name="ButtonFunction" type="Node2D" parent="Yes Button"]
+process_mode = 3
+z_index = 5
+position = Vector2(-70.5, -2.33333)
+script = ExtResource("2_0t0ui")
+
+[node name="No button" parent="." instance=ExtResource("1_3vi0e")]
+process_mode = 3
+z_index = 5
+position = Vector2(760, 428)
+scale = Vector2(6, 6)
+inputText = "No"
+
+[node name="ButtonFunction" type="Node2D" parent="No button"]
+process_mode = 3
+z_index = 5
+script = ExtResource("3_q8ule")
+
+[node name="Outline" type="ColorRect" parent="."]
+z_as_relative = false
+offset_left = 169.0
+offset_top = 95.0
+offset_right = 1006.0
+offset_bottom = 543.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

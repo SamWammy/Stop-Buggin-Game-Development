@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0eg8l74ecvc1"]
+
+[ext_resource type="PackedScene" uid="uid://c1vp5x57st6n3" path="res://Scenes/StarterMap.tscn" id="1_qyp8v"]
+[ext_resource type="PackedScene" uid="uid://26tssamfya10" path="res://Scenes/UI/UI.tscn" id="2_x36l4"]
+[ext_resource type="Script" path="res://Script/WavesScript.gd" id="3_17q5e"]
+[ext_resource type="Script" path="res://Script/TutorialFirstDisplay.gd" id="4_iowli"]
+[ext_resource type="Texture2D" uid="uid://buublwwkjcc5q" path="res://Assets/Stop Buggin' Assets/Backgrounds/Screenshot 2024-09-27 180759.png" id="5_45dnk"]
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="6_y8ohq"]
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="7_fr5le"]
+[ext_resource type="Script" path="res://Script/TutorialDisplayExit.gd" id="8_0j26s"]
+
+[node name="StarterMapDemo" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.9, 0.9)
+
+[node name="StarterMap" parent="." instance=ExtResource("1_qyp8v")]
+scale = Vector2(2.38477, 2.86539)
+
+[node name="Ui" parent="." node_paths=PackedStringArray("map_node", "waves") instance=ExtResource("2_x36l4")]
+follow_viewport_enabled = true
+map_node = NodePath("../StarterMap")
+base_speed = 100
+towerScale = Vector2(2.5, 2.5)
+waves = NodePath("../waves")
+
+[node name="waves" type="Node2D" parent="."]
+script = ExtResource("3_17q5e")
+
+[node name="TutorialOnFirst" type="CanvasLayer" parent="."]
+layer = 7
+script = ExtResource("4_iowli")
+
+[node name="Background" type="TextureRect" parent="TutorialOnFirst"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 89.0
+offset_top = 20.0
+offset_right = 1299.0
+offset_bottom = 1067.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.430135, 0.316146)
+texture = ExtResource("5_45dnk")
+
+[node name="ColorRect" type="ColorRect" parent="TutorialOnFirst/Background"]
+z_index = -2
+layout_mode = 0
+offset_left = -21.0
+offset_top = -35.0
+offset_right = 2383.0
+offset_bottom = 1736.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialOnFirst"]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -319.0
+offset_top = 24.0
+offset_right = 833.0
+offset_bottom = 709.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.795022, 1.03079)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialOnFirst/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TutorialText" type="Label" parent="TutorialOnFirst/MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(1128, 450)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("6_y8ohq")
+theme_override_font_sizes/font_size = 40
+text = "How to play: 
+1. To start the round click the green play button in the bottom 
+right corner of screen
+2. Once the round is started bugs will start to move 
+along the path
+3. Drag and place towers along side the path to unalive
+the bugs
+4. Unaliving a bug gives you money which you can use to 
+buy more towers or specials
+6. If bugs reach the end of the path you will lose hearts
+7. If your hearts drop to zero YOU LOSE"
+horizontal_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 2
+
+[node name="Separator" type="Control" parent="TutorialOnFirst/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator2" type="Control" parent="TutorialOnFirst/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="TutorialOnFirst/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator4" type="Control" parent="TutorialOnFirst/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator5" type="Control" parent="TutorialOnFirst/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="X" parent="TutorialOnFirst/MarginContainer/VBoxContainer" instance=ExtResource("7_fr5le")]
+position = Vector2(1143.94, 463.364)
+inputText = "OK"
+
+[node name="ButtonFunction" type="Node2D" parent="TutorialOnFirst/MarginContainer/VBoxContainer/X"]
+script = ExtResource("8_0j26s")

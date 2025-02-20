@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://crayu8h1rfj7f"]
+
+[ext_resource type="Texture2D" uid="uid://dlcwt4kbvxii" path="res://Assets/Stop Buggin' Assets/UI assets/pause-symbol-for-video-game.png" id="1_4tpeh"]
+[ext_resource type="Script" path="res://Script/pause_button.gd" id="1_m2807"]
+
+[node name="Pause_Button" type="Control"]
+layout_mode = 3
+anchor_right = 0.087
+anchor_bottom = 0.154
+offset_right = -0.224007
+offset_bottom = 0.207993
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m2807")
+
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.952
+offset_bottom = 4.8
+texture_normal = ExtResource("1_4tpeh")
+ignore_texture_size = true
+stretch_mode = 0

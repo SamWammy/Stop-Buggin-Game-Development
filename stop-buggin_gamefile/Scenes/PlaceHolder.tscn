@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk5ts0dpeljps"]
+
+[ext_resource type="Texture2D" uid="uid://cm48s33pw7eup" path="res://Assets/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_0y6cq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egoi8"]
+atlas = ExtResource("1_0y6cq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6skp"]
+atlas = ExtResource("1_0y6cq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqthf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egoi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6skp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrx70"]
+radius = 6.08276
+
+[node name="CharacterBody2D2" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_rqthf")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.396642
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_rrx70")

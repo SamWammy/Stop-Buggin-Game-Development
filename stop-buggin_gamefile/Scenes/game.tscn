@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0eg8l74ecvc1"]
+
+[ext_resource type="PackedScene" uid="uid://26tssamfya10" path="res://Scenes/UI/UI.tscn" id="1_bux0x"]
+[ext_resource type="PackedScene" uid="uid://c1vp5x57st6n3" path="res://Scenes/StarterMap.tscn" id="2_y8g2k"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="StarterMap" parent="." instance=ExtResource("2_y8g2k")]
+
+[node name="Ui" parent="." instance=ExtResource("1_bux0x")]

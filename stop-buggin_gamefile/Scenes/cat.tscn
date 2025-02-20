@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk5ts0dpeljps"]
+
+[ext_resource type="SpriteFrames" uid="uid://bg1ll2ht1x34h" path="res://Assets/Stop Buggin' Assets/Towers and Characters/cat_sprite_frames.tres" id="1_1foma"]
+[ext_resource type="Script" path="res://Script/cat.gd" id="1_brx4k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrx70"]
+radius = 6.08276
+
+[node name="Sensei_Floof" type="CharacterBody2D"]
+z_index = 10
+script = ExtResource("1_brx4k")
+speed = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_1foma")
+animation = &"Up"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rrx70")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 100
+z_as_relative = false
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rrx70")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://uu3p47yf2282"]
+
+[ext_resource type="Script" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/ButtonText.gd" id="1_bre45"]
+[ext_resource type="Texture2D" uid="uid://fyvcp54862h3" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/ButtonSpriteSheet.png" id="1_eid2g"]
+[ext_resource type="Script" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/texture_button.gd" id="2_banrg"]
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="2_y5rn0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6avhq"]
+atlas = ExtResource("1_eid2g")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu0vo"]
+atlas = ExtResource("1_eid2g")
+region = Rect2(48, 0, 48, 16)
+
+[node name="DefaultUiButton" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_bre45")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_6avhq")
+texture_pressed = SubResource("AtlasTexture_gu0vo")
+script = ExtResource("2_banrg")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 17.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y5rn0")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1

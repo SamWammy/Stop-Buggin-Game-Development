@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://cghsr2cc17w8v"]
+
+[ext_resource type="Texture2D" uid="uid://buublwwkjcc5q" path="res://Assets/Stop Buggin' Assets/Backgrounds/Screenshot 2024-09-27 180759.png" id="2_13sx8"]
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="3_51xep"]
+[ext_resource type="AudioStream" uid="uid://bc4s2578ywtc8" path="res://Music/Maintheme.mp3" id="3_q8iwy"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/Music.gd" id="4_3jr4e"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/GoToScene.gd" id="5_b8uw1"]
+
+[node name="Options Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_13sx8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Music" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_51xep")]
+position = Vector2(576, 203)
+inputText = "Music"
+
+[node name="ButtonFunction" type="Node2D" parent="MarginContainer/VBoxContainer/Music"]
+script = ExtResource("4_3jr4e")
+scenePath = "res://Scenes/UI/MusicOptions.tscn"
+
+[node name="Back" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_51xep")]
+position = Vector2(576, 368)
+inputText = "Back"
+
+[node name="ButtonFunction" type="Node2D" parent="MarginContainer/VBoxContainer/Back"]
+script = ExtResource("5_b8uw1")
+scenePath = "res://Scenes/main_menu.tscn"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q8iwy")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
+stream = ExtResource("3_q8iwy")
+autoplay = true

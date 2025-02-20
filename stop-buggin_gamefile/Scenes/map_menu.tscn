@@ -1,0 +1,190 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwv8ec4uslb56"]
+
+[ext_resource type="Script" path="res://Script/map_menu.gd" id="1_o5prs"]
+[ext_resource type="Texture2D" uid="uid://vapuwouwxa1" path="res://Assets/Stop Buggin' Assets/UI assets/mapmenu.png" id="1_qys4w"]
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="3_04aq1"]
+[ext_resource type="Texture2D" uid="uid://dgiaqbfuip5ur" path="res://Assets/Stop Buggin' Assets/UI assets/StarterMap.png" id="3_yore6"]
+[ext_resource type="Texture2D" uid="uid://bm27p44okuxv3" path="res://Assets/Stop Buggin' Assets/UI assets/spiral_map.png" id="5_3c54t"]
+[ext_resource type="Texture2D" uid="uid://bn7sy44f0faer" path="res://Assets/Stop Buggin' Assets/UI assets/Screenshot 2024-12-09 at 8.45.59 AM.png" id="5_q3nkb"]
+[ext_resource type="Texture2D" uid="uid://db451n82rlmdr" path="res://Assets/Stop Buggin' Assets/UI assets/Jungle.png" id="6_6y0w5"]
+[ext_resource type="AudioStream" uid="uid://bc4s2578ywtc8" path="res://Music/Maintheme.mp3" id="7_0xqee"]
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="8_lvn34"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/GoToScene.gd" id="9_1viwv"]
+[ext_resource type="Texture2D" uid="uid://byuo5tapxl1lu" path="res://Assets/Stop Buggin' Assets/UI assets/Lock.png" id="11_30gug"]
+
+[node name="Map Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5prs")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.881937, 0.881937, 0.881937, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = -3.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qys4w")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.997
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_right = -0.544067
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.917647, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_04aq1")
+theme_override_font_sizes/font_size = 100
+text = "MAP MENU
+"
+horizontal_alignment = 1
+
+[node name="StarterMap" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108986
+anchor_top = 0.193346
+anchor_right = 0.318986
+anchor_bottom = 0.438346
+offset_left = -0.552063
+offset_top = -0.28801
+offset_right = 0.527954
+offset_bottom = -0.0480042
+texture_normal = ExtResource("3_yore6")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="RiverMap" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.699882
+anchor_top = 0.180111
+anchor_right = 0.915313
+anchor_bottom = 0.432173
+offset_left = -0.264008
+offset_top = 0.287994
+offset_right = -0.440033
+offset_bottom = -0.0480042
+texture_normal = ExtResource("5_q3nkb")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SwirlMap" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.106826
+anchor_top = 0.596
+anchor_right = 0.318
+anchor_bottom = 0.841
+offset_left = -0.0640259
+offset_top = -0.208008
+offset_right = -0.335999
+offset_bottom = 0.0319824
+texture_normal = ExtResource("5_3c54t")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="JungleMap" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.701
+anchor_top = 0.596
+anchor_right = 0.911
+anchor_bottom = 0.841
+offset_left = -0.552063
+offset_top = -0.208008
+offset_right = 0.527954
+offset_bottom = 0.0319824
+texture_normal = ExtResource("6_6y0w5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="River" parent="." instance=ExtResource("8_lvn34")]
+position = Vector2(925, 321)
+inputText = "River"
+
+[node name="ButtonFunction" type="Node2D" parent="River"]
+script = ExtResource("9_1viwv")
+scenePath = "res://Scenes/UI/UI Demos/river_map_demo.tscn"
+mapname = "RiverMapDemo"
+
+[node name="Starter" parent="." instance=ExtResource("8_lvn34")]
+position = Vector2(247, 325)
+inputText = "Starter"
+
+[node name="ButtonFunction" type="Node2D" parent="Starter"]
+script = ExtResource("9_1viwv")
+scenePath = "res://Scenes/UI/UI Demos/starter_map_demo.tscn"
+mapname = "StarterMapDemo"
+
+[node name="Swirl" parent="." instance=ExtResource("8_lvn34")]
+position = Vector2(244, 587)
+inputText = "Swirl"
+
+[node name="ButtonFunction" type="Node2D" parent="Swirl"]
+script = ExtResource("9_1viwv")
+scenePath = "res://Scenes/UI/UI Demos/swirl_map_demo.tscn"
+mapname = "SwirlMapDemo"
+
+[node name="Jungle" parent="." instance=ExtResource("8_lvn34")]
+position = Vector2(925, 587)
+inputText = "Jungle"
+
+[node name="ButtonFunction" type="Node2D" parent="Jungle"]
+script = ExtResource("9_1viwv")
+scenePath = "res://Scenes/UI/UI Demos/jungle_map_demo.tscn"
+mapname = "JungleMapDemo"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0xqee")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
+stream = ExtResource("7_0xqee")
+autoplay = true
+
+[node name="RiverMapDemoLock" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 102.0
+offset_right = 1950.0
+offset_bottom = 1320.0
+scale = Vector2(0.254993, 0.152709)
+texture = ExtResource("11_30gug")
+
+[node name="SwirlMapDemoLock" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 375.0
+offset_right = 1407.0
+offset_bottom = 1553.0
+scale = Vector2(0.224281, 0.156138)
+texture = ExtResource("11_30gug")
+
+[node name="JungleMapDemoLock" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 369.0
+offset_right = 1971.0
+offset_bottom = 1393.0
+scale = Vector2(0.253622, 0.187239)
+texture = ExtResource("11_30gug")

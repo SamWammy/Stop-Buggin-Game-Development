@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://deaot8bo2c01q"]
+
+[ext_resource type="Script" path="res://Script/play_ff_button_script.gd" id="1_osw6p"]
+[ext_resource type="Texture2D" uid="uid://ci4pdk4njmyq6" path="res://Assets/Stop Buggin' Assets/UI assets/play-24 (1) with outline.png" id="2_c4j6r"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1pxb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1088.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_osw6p")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+z_index = 3
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("2_c4j6r")
+stretch_mode = 0
+
+[node name="FastForwardButton" type="TextureButton" parent="."]
+z_index = 3
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = SubResource("CompressedTexture2D_d1pxb")
+stretch_mode = 0
+
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]

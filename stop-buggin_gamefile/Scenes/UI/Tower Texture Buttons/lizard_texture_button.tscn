@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://byx5sup66hg31"]
+
+[ext_resource type="Script" path="res://Script/SpawnTower.gd" id="1_f2rmr"]
+[ext_resource type="Texture2D" uid="uid://ctkp4j3e2h66w" path="res://Assets/Stop Buggin' Assets/Towers and Characters/Lizard.png" id="2_2qssd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5oa8k"]
+font_size = 20
+font_color = Color(0.513678, 1, 0.481751, 1)
+
+[node name="lizard_texture_button" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_f2rmr")
+color = Vector3(0, 0, 0)
+eyeColor = Vector3(0, 0, 0)
+blendScale = 0.0
+
+[node name="lizard" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(32, 32)
+scale = Vector2(7, 7)
+texture = ExtResource("2_2qssd")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+text = "50$"
+label_settings = SubResource("LabelSettings_5oa8k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

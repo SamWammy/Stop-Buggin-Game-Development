@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://du7g1rubtfrps"]
+
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="1_cdiaq"]
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="2_iqfpg"]
+[ext_resource type="Script" path="res://Script/LUExit.gd" id="3_n7khx"]
+[ext_resource type="Script" path="res://Script/LUCont.gd" id="4_yyhpk"]
+
+[node name="LuPopup" type="CanvasLayer"]
+layer = 3
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 178.0
+offset_top = 106.0
+offset_right = 178.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.709142, 0.656474)
+color = Color(0.231373, 0.639216, 0.34902, 1)
+
+[node name="Label" type="Label" parent="Background"]
+z_index = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 151.0
+offset_right = 1549.0
+offset_bottom = 254.0
+scale = Vector2(0.746708, 1.41561)
+theme_override_fonts/font = ExtResource("1_cdiaq")
+theme_override_font_sizes/font_size = 100
+text = "You unlocked a new level!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit Button" parent="." instance=ExtResource("2_iqfpg")]
+process_mode = 3
+z_index = 5
+position = Vector2(782, 426)
+scale = Vector2(6, 6)
+inputText = "Exit"
+
+[node name="ButtonFunction" type="Node2D" parent="Exit Button"]
+process_mode = 3
+z_index = 5
+script = ExtResource("3_n7khx")
+scener = "res://Scenes/map_menu.tscn"
+
+[node name="Continue button" parent="." instance=ExtResource("2_iqfpg")]
+process_mode = 3
+z_index = 5
+position = Vector2(388, 424)
+scale = Vector2(6, 6)
+inputText = "Continue"
+
+[node name="ButtonFunction" type="Node2D" parent="Continue button"]
+process_mode = 3
+z_index = 5
+script = ExtResource("4_yyhpk")
+
+[node name="Outline" type="ColorRect" parent="."]
+z_as_relative = false
+offset_left = 169.0
+offset_top = 95.0
+offset_right = 1006.0
+offset_bottom = 543.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

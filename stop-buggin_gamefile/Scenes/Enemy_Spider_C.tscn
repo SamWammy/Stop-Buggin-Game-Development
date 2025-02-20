@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://gvb0qpmmhllh"]
+
+[ext_resource type="Script" path="res://Script/spider_child_enemy.gd" id="1_f8a21"]
+[ext_resource type="SpriteFrames" uid="uid://brwg5hncr5ovv" path="res://Assets/Stop Buggin' Assets/Towers and Characters/spider_sprite_frames.tres" id="2_lf40b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3ld3"]
+radius = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqyl5"]
+bg_color = Color(0.868025, 0, 0.112472, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfulb"]
+bg_color = Color(0.127942, 0.724548, 0, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
+z_as_relative = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_f8a21")
+enemy = 4
+speed = 60.0
+unit_health = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CircleShape2D_k3ld3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(1, -1)
+scale = Vector2(1.0625, 1.0625)
+sprite_frames = ExtResource("2_lf40b")
+animation = &"walking_sideways_orange"
+autoplay = "walking_sideways_orange"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 6
+offset_left = -8.66667
+offset_top = -14.0
+offset_right = 9.33333
+offset_bottom = -10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rqyl5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vfulb")
+max_value = 15.0
+step = 1.0
+value = 15.0
+fill_mode = 1
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 18.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 18.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -1.0
+offset_right = 19.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true

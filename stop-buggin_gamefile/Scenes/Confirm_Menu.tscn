@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2qvnsbnk0kvl"]
+
+[ext_resource type="PackedScene" uid="uid://uu3p47yf2282" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/DefaultUIButton.tscn" id="1_ocpt1"]
+[ext_resource type="Script" path="res://Script/Confirm_No.gd" id="2_spyxg"]
+[ext_resource type="Script" path="res://Script/ButtonScripts/Quit.gd" id="3_pb7a7"]
+[ext_resource type="FontFile" uid="uid://dkw6luvbedf1c" path="res://Assets/Stop Buggin' Assets/UI assets/Buttons/LuckiestGuy.ttf" id="4_autuq"]
+[ext_resource type="AudioStream" uid="uid://bc4s2578ywtc8" path="res://Music/Maintheme.mp3" id="4_wvk7f"]
+
+[node name="Confirm Menu" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.639216, 0.34902, 1)
+
+[node name="No Button" parent="." instance=ExtResource("1_ocpt1")]
+process_mode = 3
+position = Vector2(814, 470)
+scale = Vector2(6, 6)
+inputText = "No"
+
+[node name="ButtonFunction" type="Node2D" parent="No Button"]
+process_mode = 3
+script = ExtResource("2_spyxg")
+scenePath = "res://Scenes/main_menu.tscn"
+
+[node name="Yes button" parent="." instance=ExtResource("1_ocpt1")]
+process_mode = 3
+position = Vector2(312, 476)
+scale = Vector2(6, 6)
+inputText = "Yes"
+
+[node name="ButtonFunction" type="Node2D" parent="Yes button"]
+process_mode = 3
+script = ExtResource("3_pb7a7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wvk7f")
+autoplay = true
+
+[node name="Maintheme" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
+stream = ExtResource("4_wvk7f")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 148.0
+offset_right = 1543.0
+offset_bottom = 251.0
+scale = Vector2(0.746708, 1.41561)
+theme_override_fonts/font = ExtResource("4_autuq")
+theme_override_font_sizes/font_size = 100
+text = "Are you sure you want to quit?"

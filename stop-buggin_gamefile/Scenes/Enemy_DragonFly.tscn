@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddjfq2kkn68r"]
+
+[ext_resource type="Script" path="res://Script/enemy.gd" id="1_ne1p1"]
+[ext_resource type="Texture2D" uid="uid://kj58ddi8bxsc" path="res://Assets/Stop Buggin' Assets/Enemies/Dragonfly.png" id="1_ru2yr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3ld3"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iqki"]
+atlas = ExtResource("1_ru2yr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp7bc"]
+atlas = ExtResource("1_ru2yr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlbh5"]
+atlas = ExtResource("1_ru2yr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
+atlas = ExtResource("1_ru2yr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2qeg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iqki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp7bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlbh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu2lt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqyl5"]
+bg_color = Color(0.868025, 0, 0.112472, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfulb"]
+bg_color = Color(0.127942, 0.724548, 0, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
+z_as_relative = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ne1p1")
+speed = 50.0
+unit_health = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_k3ld3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_e2qeg")
+autoplay = "default"
+frame_progress = 0.999378
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 6
+offset_left = -9.0
+offset_top = -20.0
+offset_right = 9.0
+offset_bottom = -16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rqyl5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vfulb")
+max_value = 10.0
+step = 1.0
+value = 10.0
+fill_mode = 1
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 18.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 18.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -1.0
+offset_right = 19.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)

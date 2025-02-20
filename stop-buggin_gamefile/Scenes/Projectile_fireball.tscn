@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckasne7namd71"]
+
+[ext_resource type="Script" path="res://Script/projectile_fireball.gd" id="1_4yoms"]
+[ext_resource type="Texture2D" uid="uid://cf4pvq7keuxdl" path="res://Assets/Stop Buggin' Assets/Enemies/Fireball.png" id="1_48tth"]
+[ext_resource type="Shader" path="res://Script/Projectile_fireball.gdshader" id="1_pamwp"]
+[ext_resource type="Texture2D" uid="uid://byj4ipbwj3esq" path="res://Assets/Stop Buggin' Assets/Enemies/Fireball_flipped.png" id="2_6mimc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwb8u"]
+shader = ExtResource("1_pamwp")
+shader_parameter/color_tint = Vector4(0, 0, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjn88"]
+shader = ExtResource("1_pamwp")
+shader_parameter/color_tint = Vector4(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l1h6"]
+atlas = ExtResource("1_48tth")
+region = Rect2(14, 2, 45, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rf03j"]
+atlas = ExtResource("2_6mimc")
+region = Rect2(14, 5, 45, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08xj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l1h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rf03j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3wxj"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjt3t"]
+radius = 8.0
+height = 28.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_pwb8u")
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_4yoms")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rjn88")
+sprite_frames = SubResource("SpriteFrames_08xj4")
+autoplay = "default"
+frame_progress = 0.466377
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p3wxj")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 100
+z_as_relative = false
+position = Vector2(3, 0)
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_sjt3t")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
